@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Category Classifier</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0 20px;
+        }
+        form {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 350px;
+            transition: box-shadow 0.3s ease;
+        }
+        form:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #222;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 8px #4a90e2;
+        }
+        label {
+            font-weight: 600;
+            margin-top: 15px;
+            display: block;
+            color: #555;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.1);
+            transition: transform 0.2s ease;
+        }
+        input[type="radio"]:hover {
+            transform: scale(1.3);
+        }
+        input[type="submit"] {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background: #4a90e2;
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #357ABD;
+            transform: translateY(-2px);
+        }
+        h3 {
+            margin-top: 30px;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <h2>Enter News Headline</h2>
+        <input type="text" name="headline" placeholder="Enter headline" required><br><br>
+        <label>Select Model:</label>
+        <input type="radio" name="model" value="naive_bayes" required> Naive Bayes<br>
+        <input type="radio" name="model" value="logistic_regression"> Logistic Regression<br><br>
+        <input type="submit" value="Predict">
+
+        {% if prediction %}
+            <h3>Predicted Category: {{ prediction }}</h3>
+        {% endif %}
+    </form>
+</body>
+</html>
